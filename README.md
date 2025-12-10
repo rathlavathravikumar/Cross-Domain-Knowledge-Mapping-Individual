@@ -1,5 +1,1 @@
-Cross Domain Knowledge Mapping Tool
-Infosys Springboard Virtual Internship 6.0
-Project Overview
-
-This project aims to build a Cross Domain Knowledge Mapping Tool that extracts, analyzes, and maps relationships between concepts across various domains using Natural Language Processing (NLP).  
+The Cross Domain Knowledge Mapping Tool is an NLP-based system that extracts important concepts from text and identifies relationships across different domains. It uses techniques like Named Entity Recognition, semantic similarity, and knowledge graph visualization to map how topics are connected. The tool helps users understand interdisciplinary links by generating an interactive graph showing concept relationships. It is useful for learning, research, and analyzing cross-domain knowledge efficiently.
