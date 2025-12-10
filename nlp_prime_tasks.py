@@ -1,0 +1,98 @@
+import nltk
+from nltk.tokenize import word_tokenize
+nltk.download('punkt_tab')
+nltk.download('averaged_perceptron_tagger_eng')
+text = "The Students are studying in NLP Lab"
+tokens = word_tokenize(text)
+pos_tags = nltk.pos_tag(tokens)
+print(pos_tags)
+
+import nltk
+from nltk.tokenize import word_tokenize
+nltk.download('punkt_tab')
+nltk.download('averaged_perceptron_tagger_eng')
+text = "Artificial intelligence is transforming the world rapidly"
+tokens = word_tokenize(text)
+pos_tags = nltk.pos_tag(tokens)
+print(pos_tags)
+
+import nltk
+from nltk.stem import WordNetLemmatizer
+from nltk.tokenize import word_tokenize
+nltk.download('wordnet')
+nltk.download('punkt_tab')
+nltk.download('omw-1.4')
+lemmatizer = WordNetLemmatizer()
+text = "The studies were running better than expected."
+tokens = word_tokenize(text)
+len_words = [lemmatizer.lemmatize(word) for word in tokens]
+print("Original_words:", tokens)
+print("Lemmatized words:", len_words)
+
+import nltk
+from nltk.stem import WordNetLemmatizer, PorterStemmer
+from nltk.tokenize import word_tokenize
+nltk.download('wordnet')
+nltk.download('punkt_tab')
+nltk.download('omw-1.4')
+lemmatizer = WordNetLemmatizer()
+stemmer = PorterStemmer()
+text = "The players are running and studying regularly"
+tokens = word_tokenize(text)
+len_words = [lemmatizer.lemmatize(word) for word in tokens]
+stemmed_words = [stemmer.stem(word) for word in tokens]
+print("Original_words:", tokens)
+print("Stemmed words:", stemmed_words)
+print("Lemmatized words:", len_words)
+
+num = int(input("Enter a number: "))
+is_prime = True
+if num <= 1:
+    is_prime = False
+else:
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            is_prime = False
+            break
+if is_prime:
+    print(num, "is a prime number.")
+else:
+    print(num, "is not a prime number.")
+
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+nltk.download('punkt')
+nltk.download('punkt_tab')
+nltk.download('stopwords')
+text = "The job description is very interesting and offers great opportunities."
+tokens = word_tokenize(text, language='english')
+stop_words = set(stopwords.words('english'))
+filtered_words = [word for word in tokens if word.lower() not in stop_words]
+print("Original Tokens:", tokens)
+print("Filtered Words:", filtered_words)
+
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.stem import WordNetLemmatizer, PorterStemmer
+from nltk.corpus import stopwords
+nltk.download('punkt')
+nltk.download('punkt_tab')
+nltk.download('wordnet')
+nltk.download('stopwords')
+nltk.download('averaged_perceptron_tagger_eng')
+text = "The hardworking students were studying and preparing for their exams sincerely"
+tokens = word_tokenize(text)
+pos_tags = nltk.pos_tag(tokens)
+stop_words = set(stopwords.words('english'))
+filtered_words = [word for word in tokens if word.lower() not in stop_words]
+lemmatizer = WordNetLemmatizer()
+stemmer = PorterStemmer()
+len_words = [lemmatizer.lemmatize(word) for word in tokens]
+stemmed_words = [stemmer.stem(word) for word in tokens]
+print("Original_words:", tokens)
+print("Original Tokens:", tokens)
+print("Filtered Words:", filtered_words)
+print("Stemmed words:", stemmed_words)
+print("Lemmatized words:", len_words)
+print(pos_tags)

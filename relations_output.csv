@@ -1,0 +1,46 @@
+import pandas as pd
+import networkx as nx
+from pyvis.network import Network
+import webbrowser
+
+# Load your extracted triples
+data = pd.read_csv("relations_output.csv")
+
+# Identify which column holds your triples
+triples_list = []
+
+for cell in data.iloc[:, -1]:  # assuming last column contains triples
+    try:
+        tuples = eval(cell)  # convert string representation into list of tuples
+        triples_list.extend(tuples)
+    except:
+        pass
+
+print(f"✅ Extracted {len(triples_list)} triples from relations_output.csv")
+
+# Build Knowledge Graph
+G = nx.DiGraph()
+
+for subj, rel, obj in triples_list:
+    G.add_node(subj, color="lightblue")
+    G.add_node(obj, color="lightgreen")
+    G.add_edge(subj, obj, label=rel)
+
+print(f"✅ Graph built with {len(G.nodes())} nodes and {len(G.edges())} edges.\n")
+
+# Print text-style relationships
+for node in list(G.nodes())[:10]:  # limit output
+    if len(G[node]) > 0:
+        print(f"Relations for '{node}':")
+        for neighbor in G[node]:
+            print("→", neighbor, "| Relation:", G[node][neighbor]["label"])
+        print()
+
+# Save as HTML
+net = Network(height="750px", width="100%", directed=True, notebook=False)
+net.from_nx(G)
+net.toggle_physics(True)
+net.write_html("my_knowledge_graph.html")
+
+print("🎉 Interactive Knowledge Graph saved as my_knowledge_graph.html")
+webbrowser.open("my_knowledge_graph.html")
